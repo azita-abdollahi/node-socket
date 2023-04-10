@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const connectDB = require("./utils/connectDB");
 const app = express();
 
 const corsOption = {
@@ -21,4 +22,5 @@ const port = process.env.PORT;
 
 app.listen(port, () => {
     console.log(`server Listening On Port ${port} successfully! `);
+    connectDB();
 })
