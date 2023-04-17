@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 require('dotenv').config();
 
-export const signJwt = (payload, options = {}) => {
+exports.signJwt = (payload, options = {}) => {
     const privateKey = fs.readFileSync('./private.key', 'utf-8');
     const token = jwt.sign(payload, privateKey, {
       ...(options && options),
@@ -11,7 +11,7 @@ export const signJwt = (payload, options = {}) => {
     return `Bearer ${token}`
   };
   
-  export const verifyJwt = (token) => {
+exports.verifyJwt = (token) => {
     try {
       const publicKey = fs.readFileSync('./public.key', 'utf-8');
       return jwt.verify(token, publicKey);

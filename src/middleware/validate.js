@@ -1,4 +1,4 @@
-const SchemaValidationException = require('../utils/appError');
+const SchemaValidationException = require('../utils/appError').SchemaValidationException;
 
 function validate(schema, property) {
     return function(req, res, next) {
