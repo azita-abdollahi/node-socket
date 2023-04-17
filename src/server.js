@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const connectDB = require("./utils/connectDB");
+const authRouter = require('./routes/auth.router');
 const app = express();
 
 const corsOption = {
@@ -17,6 +18,8 @@ const corsOption = {
   if (process.env.NODE_ENV == 'development') {
     app.use(morgan('dev'));
   }
+
+app.use('/api/auth', authRouter);
 
 const port = process.env.PORT;
 
