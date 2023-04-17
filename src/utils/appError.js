@@ -6,48 +6,62 @@ class ApiError extends Error {
 	}
   }
   
-  export class NotFoundException extends ApiError {
+  class NotFoundException extends ApiError {
 	constructor(message) {
 	  super(message ?? "The requested resource was not found.");
 	  this.name = "NotFoundException";
 	}
   }
   
-  export class SchemaValidationException extends ApiError {
+  class SchemaValidationException extends ApiError {
 	constructor(message) {
 	  super(message ?? "The request data did not pass schema validation.");
 	  this.name = "SchemaValidationException";
 	}
   }
   
-  export class ForbiddenException extends ApiError {
+  class ForbiddenException extends ApiError {
 	constructor(message) {
 	  super(message ?? "Access to the requested resource was forbidden.");
 	  this.name = "ForbiddenException";
 	}
   }
   
-  export class DuplicateException extends ApiError {
+  class DuplicateException extends ApiError {
 	constructor(message) {
 	  super(message ?? "The requested resource already exists.");
 	  this.name = "DuplicateException";
 	}
   }
   
-  export class TimeoutException extends ApiError {
+  class TimeoutException extends ApiError {
 	constructor(message) {
 	  super(message ?? "The operation has timed out.");
 	  this.name = "TimeoutException";
 	}
   }
   
-  export default class MongoException extends ApiError {
+  class MongoException extends ApiError {
 	constructor(message) {
 	  super(message ?? "An error occurred while performing a MongoDB operation.");
 	  this.name = "MongoException";
 	}
   }
 
+  class AuthorizeException extends ApiError {
+	constructor(message) {
+	  super(message ?? "Unauthorized.");
+	  this.name = "AuthorizeException";
+	}
+  }
   
 
-  
+module.exports = {
+	NotFoundException,
+	SchemaValidationException,
+	ForbiddenException,
+	DuplicateException,
+	TimeoutException,
+	MongoException,
+	AuthorizeException
+}
