@@ -3,6 +3,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const connectDB = require("./utils/connectDB");
 const authRouter = require('./routes/auth.router');
+const userRouter = require('./routes/user.router');
 const app = express();
 
 const corsOption = {
@@ -20,6 +21,7 @@ const corsOption = {
   }
 
 app.use('/api/auth', authRouter);
+app.use('/api/users', userRouter);
 
 const port = process.env.PORT;
 
